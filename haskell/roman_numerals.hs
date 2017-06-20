@@ -14,3 +14,6 @@ toRomanNumerals n
 
 getPred :: Integer -> (Integer, String)
 getPred n = head(filter(\(x, _) -> (quot n x) >0) numerals)
+
+
+--TODO: Create toSafeRomanNumerals that pre-sorts the numerals lists it's given
