@@ -10,6 +10,7 @@ toRomanNumerals :: Integer -> String
 toRomanNumerals n
   | n == 0 = ""
   | otherwise = snd(predecessor) ++ toRomanNumerals(n - fst(predecessor))
+  --Possible TODO: investigate efficiency of ++ vs : for string concatonation
   where predecessor = getPred(n)
 
 getPred :: Integer -> (Integer, String)
