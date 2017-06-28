@@ -21,3 +21,13 @@ filteredList = filter (\(x) -> (x `mod` 2==0) && (x<4000000)) list
 answer = sum(filteredList)
 
 --TODO: generate an infinite list, increase efficiency of fib function
+
+----------------------------------------------------
+--infinite list solution/no arbritrary index limit--
+----------------------------------------------------
+
+infinite_list = filter (\(x) -> (x `mod` 2==0)) (map fib [1..])
+--filtering infinite fibonnaci list by multiples of 2
+
+infinite_answer = sum(takeWhile (\(x) -> (x<4000000)) infinite_list)
+--taking only the elemnts that are under 4 million and calculating the sum
