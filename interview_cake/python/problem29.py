@@ -18,9 +18,8 @@ def validateJsStack(str):
             if (currChar == requiredCloser):
                 stack.pop()
                 closer_stack.pop()
-            else:
-                if currChar in validClosers:
-                    return False
+            elif currChar in validClosers:
+                return False
         if currChar in validOpeners:
             stack.append(currChar)
             closerIndex = validOpeners.index(currChar)
