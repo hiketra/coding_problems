@@ -6,7 +6,7 @@
 ### Partial solution...
 ### TODO: Need to remove index-based logic in validateJsBraces, needs
 ## to iterate through every character to account for inner-brackets!
-
+## Needs to account for wrong closer coming before correct opener
 validOpeners = ['(', '{', '[']
 validClosers = [')', '}', ']']
 
