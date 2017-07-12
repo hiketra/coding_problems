@@ -5,12 +5,12 @@
 
 validOpeners = ['(', '{', '[']
 validClosers = [')', '}', ']']
-#Stack of the encounted opening brackets
+#Stack of the encountered openers
 stack = []
-#Stack of the required closing brackets
+#Stack of the required closers
 closer_stack = []
 
-def validateJsStack(str):
+def validateJsString(str):
     requiredCloser = ""
     for currChar in str:
         if(len(closer_stack) > 0):
