@@ -3,21 +3,18 @@
 # brackets, and parentheses are off. To save you both some time,
 # you decide to write a braces/brackets/parentheses validator.
 
-### Partial solution...
-### TODO: Need to remove index-based logic in validateJsBraces, needs
-## to iterate through every character to account for inner-brackets!
-## Needs to account for wrong closer coming before correct opener
 validOpeners = ['(', '{', '[']
 validClosers = [')', '}', ']']
-
+#Stack of the encounted opening brackets
 stack = []
+#Stack of the required closing brackets
 closer_stack = []
 
 def validateJsStack(str):
-    reqCloser = ""
+    requiredCloser = ""
     for currChar in str:
         if(len(closer_stack) > 0):
-            reqCloser = closer_stack[-1]
+            requiredCloser = closer_stack[-1]
             if (currChar == reqCloser):
                 stack.pop()
                 closer_stack.pop()
@@ -25,6 +22,7 @@ def validateJsStack(str):
             stack.append(currChar)
             closerIndex = validOpeners.index(currChar)
             closer_stack.append(validClosers[closerIndex])
+        #debugging
         print(stack)
         print("Required closer: " + reqCloser)
         print("Current char: " + currChar)
