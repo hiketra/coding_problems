@@ -10,8 +10,7 @@ def inplaceStringReversal(string):
     for i in range(limit):
         a = lst[i]
         b = lst[-(i+1)]
-        print(b + a + str(i))
         lst[i] = b
         lst[-(i+1)] = a
 
-    print(lst)
+    return str(lst)
