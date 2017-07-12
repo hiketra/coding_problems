@@ -3,8 +3,6 @@
 # brackets, and parentheses are off. To save you both some time,
 # you decide to write a braces/brackets/parentheses validator.
 
-#TODO: Fix bug where not picking up redundant closer braces
-
 validOpeners = ['(', '{', '[']
 validClosers = [')', '}', ']']
 #Stack of the encounted opening brackets
@@ -27,10 +25,6 @@ def validateJsStack(str):
             stack.append(currChar)
             closerIndex = validOpeners.index(currChar)
             closer_stack.append(validClosers[closerIndex])
-        #debugging
-        print(stack)
-        print("Required closer: " + requiredCloser)
-        print("Current char: " + currChar)
     if (len(stack) == 0 & len(closer_stack) == 0):
         return True
     return False
