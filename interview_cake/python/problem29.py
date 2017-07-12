@@ -10,41 +10,24 @@
 validOpeners = ['(', '{', '[']
 validClosers = [')', '}', ']']
 
-def getCorrespondingCloser(char):
-    limit = len(validOpeners)
-    i = 0
-    flag = True
-    while i < limit:
-        if (validOpeners[i] == char):
-            return validClosers[i]
-        else:
-            i+=1
+stack = []
+closer_stack = []
 
-# Loops through a supplied string's characters checking for openers
-# and then splits the string into a substring from that index on-wards
-# to check for a corresponding closer.
-
-def validateJsBraces(str):
-    limit = len(str)
-    i = 0
-    while i < limit:
-        ## Trying to emulate conventional C-style for loops since index-heavy
-        currentChar = str[i]
-        if currentChar in validOpeners:
-            hasCloser = validateSubstring(str[i:], getCorrespondingCloser(currentChar))
-            if(hasCloser == -1):
-                return False
-            else:
-                i = hasCloser
-        else:
-            i+=1
-    return True
-# Takes a substring, checks for a relevant opener/closer and returns
-# the index at which the closing character is found, or -1 if not found
-
-def validateSubstring(str, char):
+def validateJsStack(str):
+    reqCloser = ""
     for currChar in str:
-        if (currChar == char):
-            return str.index(currChar)
-    ##if there is no closer, return -1
-    return -1
+        if(len(closer_stack) > 0):
+            reqCloser = closer_stack[-1]
+            if (currChar == reqCloser):
+                stack.pop()
+                closer_stack.pop()
+        if currChar in validOpeners:
+            stack.append(currChar)
+            closerIndex = validOpeners.index(currChar)
+            closer_stack.append(validClosers[closerIndex])
+        print(stack)
+        print("Required closer: " + reqCloser)
+        print("Current char: " + currChar)
+    if (len(stack) == 0):
+        return True
+    return False
